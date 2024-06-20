@@ -1,0 +1,48 @@
+﻿@page "/GeradorQRCode"
+
+<h1>Gerador de QrCode</h1>
+
+    <InputText id="Url" name="Url" class="form-control-sm mb-1"
+    @bind-Value="@url"></InputText>
+
+<button type="submit" @onclick="GerarQrCodeClick" 
+    class="btn btn-primary shadow-none">Gerar QrCode</button>
+@* 
+<input @bind="url" placeholder="Cole a Url Aqui" />
+<button @onclick="GerarQrCodeClick">Gerar QR Code</button>  *@
+@if (!string.IsNullOrEmpty(imagemQRCode))
+{
+
+    <img class="position-absolute top-50 start-50 translate-middle mt-1" 
+    src="@imagemQRCode" style="height: 250px; width: 250px" alt="QR Code" />
+}
+
+@if(@campoVazio == true)
+{
+    <h5 class="text-danger">@mensagem</h5> 
+}
+
+
+@code {
+
+    private string? imagemQRCode { get; set; } 
+    private string? mensagem { get; set; }
+    private bool campoVazio { get; set; }
+
+    [Required]
+    private string? url {get;  set; } 
+
+    private void GerarQrCodeClick( )
+    {
+        if(url == null || url == "")
+        {
+            campoVazio = true;
+            mensagem = "Digite a Url";
+        }
+        else
+        {
+            campoVazio = false;
+            imagemQRCode = GeradorDeQrCode.GerarQrCodePelaUrl(url!);         
+        }
+    }
+}
