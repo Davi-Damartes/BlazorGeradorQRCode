@@ -1,0 +1,10 @@
+﻿.QrCodeFormulario{
+    flex: 1;
+    text-align: center;
+}
+.QrCodeImagem {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    margin-top: 2%;
+}
