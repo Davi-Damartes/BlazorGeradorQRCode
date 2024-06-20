@@ -1,9 +1,49 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>GeradorQRCode</PageTitle>
 
-<h1>Hello, world!</h1>
+@if (@campoVazio == true)
+{
+    <h5 class="QrCodeFormulario text-danger">@mensagemErro</h5>
+}
+<div class="QrCodeFormulario">
+<h1>Gerar QrCode</h1>
 
-Welcome to your new app.
+<InputText id="Url" name="Url" class="form-control-sm mb-1"@bind-Value="@url"></InputText>
+<button type="submit" @onclick="GerarQrCodeClick"
+        class="btn btn-primary shadow-none fs-6">
+        <b>Gerar QrCode</b>
+</button>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+<div class="QrCodeImagem">
+@if (!string.IsNullOrEmpty(imagemQRCode))
+{
+    <img src="@imagemQRCode" style="height: 250px; width: 250px" alt="QR Code" />
+}
+
+</div>
+
+@code {
+
+    private string? imagemQRCode { get; set; }
+    private string? mensagemErro { get; set; }
+    private bool campoVazio { get; set; }
+    private string? url { get; set; }
+
+    private void GerarQrCodeClick( )
+    {
+        if (string.IsNullOrEmpty(url))
+        {
+            campoVazio = true;
+            mensagemErro = "Digite a Url no Campo abaixo";
+        }
+        else
+        {
+            campoVazio = false;
+            imagemQRCode = GeradorQrCode.GerarQrCodePelaUrl(url!);
+        }
+    }
+}
