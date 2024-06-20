@@ -7,23 +7,19 @@
     <h5 class="QrCodeFormulario text-danger">@mensagemErro</h5>
 }
 <div class="QrCodeFormulario">
-<h1>Gerar QrCode</h1>
-
-<InputText id="Url" name="Url" class="form-control-sm mb-1"@bind-Value="@url"></InputText>
-<button type="submit" @onclick="GerarQrCodeClick"
-        class="btn btn-primary shadow-none fs-6">
-        <b>Gerar QrCode</b>
-</button>
+    <h1>Gerador QrCode</h1>
+    <InputText id="Url" name="Url" class="form-control-sm mb-1"@bind-Value="@url"></InputText>
+    <button type="submit" @onclick="GerarQrCodeClick"
+            class="btn btn-primary shadow-none fs-6">
+            <b>Criar QrCode</b>
+    </button>
 </div>
 
-
-
 <div class="QrCodeImagem">
-@if (!string.IsNullOrEmpty(imagemQRCode))
-{
-    <img src="@imagemQRCode" style="height: 250px; width: 250px" alt="QR Code" />
-}
-
+    @if (!string.IsNullOrEmpty(imagemQRCode))
+    {
+        <img src="@imagemQRCode" alt="QR Code" />
+    }
 </div>
 
 @code {
@@ -38,7 +34,7 @@
         if (string.IsNullOrEmpty(url))
         {
             campoVazio = true;
-            mensagemErro = "Digite a Url no Campo abaixo";
+            mensagemErro = "Digite a Url no Campo abaixo!!!";
         }
         else
         {
