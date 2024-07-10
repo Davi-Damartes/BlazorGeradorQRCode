@@ -1,32 +1,46 @@
 ﻿@page "/"
 
-<PageTitle>GeradorQRCode</PageTitle>
+<div style="height: 100vh">
+    <div class="d-flex justify-content-center align-items-center mb-4">
+        <container >
+            <div class="text-center">
+                <div style="font-size: 75px;">Gerador de QrCode</div>
+            </div>
+            <div class="text-center">
+                <InputText @bind-Value="@url" id="Url" name="Url" style="width: 600px" class="form-control-lg mb-1">
+                </InputText>
+            </div>
 
-@if (@campoVazio == true)
-{
-    <h5 class="QrCodeFormulario text-danger">@mensagemErro</h5>
-}
-<div class="QrCodeFormulario">
-    <h1>Gerador QrCode</h1>
-    <InputText id="Url" name="Url" class="form-control-sm mb-1"@bind-Value="@url"></InputText>
-    <button type="submit" @onclick="GerarQrCodeClick"
-            class="btn btn-primary shadow-none fs-6">
-            <b>Criar QrCode</b>
-    </button>
+            <div class="text-center">
+                <button type="submit" @onclick="GerarQrCodeClick"
+                        class="btn btn-primary shadow-none mt-2" style="font-size: 35px; border-radius: 15px;">
+                    Gerar QrCode
+                </button>
+            </div>
+            <div class="text-center" style="min-height: 50px;">
+                @if (@campoVazio == true)
+                {
+                    <h2 class="text-danger">@mensagem</h2>
+                }
+            </div>
+
+            <div class="text-center mt-4" style="min-height: 400px;">
+                @if (!string.IsNullOrEmpty(imagemQRCode))
+                {
+                    <img src="@imagemQRCode" style="height: 400px; width: 400px" alt="QR Code" />
+                }
+            </div>
+        </container>
+    </div>
 </div>
 
-<div class="QrCodeImagem">
-    @if (!string.IsNullOrEmpty(imagemQRCode))
-    {
-        <img src="@imagemQRCode" alt="QR Code" />
-    }
-</div>
 
 @code {
 
     private string? imagemQRCode { get; set; }
-    private string? mensagemErro { get; set; }
+    private string? mensagem { get; set; }
     private bool campoVazio { get; set; }
+
     private string? url { get; set; }
 
     private void GerarQrCodeClick( )
@@ -34,7 +48,7 @@
         if (string.IsNullOrEmpty(url))
         {
             campoVazio = true;
-            mensagemErro = "Digite a Url no Campo abaixo!!!";
+            mensagem = "Por favor, Digite o Link ou a Url";
         }
         else
         {
