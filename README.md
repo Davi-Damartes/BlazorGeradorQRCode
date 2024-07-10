@@ -1,10 +1,12 @@
-
 # BlazorGeradorQrcCode 
 
 Este projeto é uma aplicação web desenvolvida em Blazor Server, destinada exclusivamente à geração de QR Codes. A aplicação permite aos usuários criar QR Codes inserindo texto ou URLs.
 ## Demonstração
 
-- Gerando QrCode
+- Gerando QrCodes
+
+https://github.com/Davi-Damartes/BlazorSimuladorProva/assets/167019873/4fcaf866-5f87-407c-ae38-b98184539e99
+
 
 ## Autores
 
@@ -48,6 +50,5 @@ ou através da tecla de Depuração:
 ```
 
 
-
-- Agora basta colar ou escrever o Link ou Url no campo para ser gerado o QrCode.
+## Agora basta colar ou escrever o Link ou Url no campo para ser gerado o QrCode.
 
