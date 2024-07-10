@@ -24,6 +24,8 @@ a, .btn-link {
 
 .content {
     padding-top: 1.1rem;
+    flex-grow: 1;
+    padding: 16px;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -66,3 +68,5 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+
