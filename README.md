@@ -50,5 +50,5 @@ ou através da tecla de Depuração:
 ```
 
 
-## Agora basta colar ou escrever o Link ou Url no campo para ser gerado o QrCode.
+## Agora basta colar ou escrever o Link ou Url no campo para ser gerado o QrCode!
 
